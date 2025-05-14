@@ -57,6 +57,7 @@ static void MX_TIM1_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 TIM_HandleTypeDef htim1;
+uint16_t dutycycle = 10;
 
 /* USER CODE END 0 */
 
@@ -102,6 +103,10 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  htim1.Instance->CCR1 = dutycycle;
+	  dutycycle += 10;
+	  if(dutycycle > 90) dutycycle = 10;
+	  HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }
